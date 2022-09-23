@@ -21,7 +21,7 @@ namespace AsyncApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public RelayCommand
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -34,8 +34,8 @@ namespace AsyncApp
 
         private void txtSearch_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtSearch.Text == "")
-                txtSearch.Clear();
+            if (txtSearch.Text == "Search:")
+                txtSearch.Text="";
         }
 
         private void txtSearch_LostFocus(object sender, RoutedEventArgs e)

@@ -4,9 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AsyncApp"
+        xmlns:viewModel="clr-namespace:AsyncApp.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="Northwind Explorer" Height="450" Width="800" Background="#3050a0"
         Icon="Images/icon.jpg">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         
         <Grid.ColumnDefinitions>
@@ -52,12 +58,12 @@
                          Style="{StaticResource menuButtonTheme}"/>
             <RadioButton Content="Regions" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}"/>
+            <RadioButton Content="Search" Height="40" Foreground="GhostWhite" FontSize="12px"
+                         Style="{StaticResource menuButtonTheme}"/>
 
         </StackPanel>
 
-        <ContentControl Grid.Row="2" Grid.Column="2" Margin="10">
-            
-        </ContentControl>
-        
+        <ContentControl Grid.Row="2" Grid.Column="2" Margin="10" Content="{Binding Path=CurrentView}"/>
+
     </Grid>
 </Window>
