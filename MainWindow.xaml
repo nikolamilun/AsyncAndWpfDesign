@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AsyncApp"
         xmlns:viewModel="clr-namespace:AsyncApp.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="Northwind Explorer" Height="450" Width="800" Background="#3050a0"
+        Title="Northwind Explorer" Height="650" Width="1200" Background="#3050a0"
         Icon="Images/icon.jpg">
 
     <Window.DataContext>
@@ -18,7 +18,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
 
@@ -49,17 +49,17 @@
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
 
             <RadioButton Content="Employees" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding EmployeesViewCommand}"/>
             <RadioButton Content="Customers" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding CustomersViewCommand}"/>
             <RadioButton Content="Orders" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding OrdersViewCommand}"/>
             <RadioButton Content="Products" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding ProductsViewCommand}"/>
             <RadioButton Content="Regions" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding RegionsViewCommand}"/>
             <RadioButton Content="Search" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding SearchViewCommand}"/>
 
         </StackPanel>
 

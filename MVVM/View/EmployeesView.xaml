@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:AsyncApp.View"
              xmlns:viewModel="clr-namespace:AsyncApp.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="650" d:DesignWidth="1200" FontSize="8px">
 
     <UserControl.DataContext>
         <viewModel:EmployeesViewModel/>
     </UserControl.DataContext>
     
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataView">
         <DataGrid ItemsSource="{Binding Path=Employees}" Background="#3f3fc3">
             
         </DataGrid>

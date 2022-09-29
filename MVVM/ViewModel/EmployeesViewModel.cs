@@ -8,6 +8,8 @@ using System.Data.SqlClient;
 using AsyncApp.Model;
 using System.Windows.Controls;
 using System.Threading;
+using System.Drawing;
+using System.IO;
 
 namespace AsyncApp.ViewModel
 {
@@ -27,31 +29,37 @@ namespace AsyncApp.ViewModel
 
         public EmployeesViewModel()
         {
-            
-
+            Task.Run(() => LoadDataAsync().Wait());
         }
 
-        private async Task<Employee> LoadData()
+        private async Task LoadDataAsync()
         {
-            List<Task<Employee>> list = new List<Task<Employee>>();
-            using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2571GNM\SQLEXPRESS;Integrated Security=True;"))
+            try
             {
-                SqlCommand selectCmd = new SqlCommand("SELECT * FROM Employees", conn);
-                SqlDataReader sdr = selectCmd.ExecuteReader();
-
-                while (sdr.Read())
+                List<Employee> list = new List<Employee>();
+                using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-0KT9RPJ;Initial Catalog=Northwind;Integrated Security=True"))
                 {
-                    list.Add(Task.Run(() => 
+                    conn.Open();
+
+                    SqlCommand selectCmd = new SqlCommand("SELECT * FROM Employees", conn);
+                    SqlDataReader sdr = selectCmd.ExecuteReader();
+
+                    while (sdr.Read())
+                    {
+                        Employee ep = await Task.Run(() =>
                         {
-                            return new Employee((int)sdr[0], sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), (DateTime)sdr[5], (DateTime)sdr[6], sdr[7].ToString(), sdr[8].ToString(), sdr[9].ToString(), sdr[10].ToString(), sdr[11].ToString(), sdr[12].ToString(), sdr[13].ToString(), (Image)sdr[14], sdr[15].ToString(), (int)sdr[16], sdr[17].ToString());
-                        }
-                    ));
+                            return new Employee(int.Parse(sdr[0].ToString()), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), Convert.ToDateTime((sdr[5].ToString())), Convert.ToDateTime(sdr[6].ToString()), sdr[7].ToString(), sdr[8].ToString(), sdr[9].ToString(), sdr[10].ToString(), sdr[11].ToString(), sdr[12].ToString(), sdr[13].ToString(), sdr[14].ToString(), sdr[15].ToString(), (sdr[16].ToString() == "") ? 0 : int.Parse(sdr[16].ToString()), sdr[17].ToString());
+                        });
+                        list.Add(ep);
+                    }
+
+                    Employees = list;
                 }
             }
-
-            var results = await Task.WhenAll(list);
-
-            return results;
+            catch (Exception)
+            {
+                Employees = null;
+            }
         }
     }
 }
