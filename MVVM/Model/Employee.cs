@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace AsyncApp.Model
 {
-    class Employee
+    public class Employee
     {
         public Employee(int employeeID, string lastName, string firstName, string title, string titleOfCourtesy, DateTime dateOfBirth, DateTime hireDate, string address, string city, string region, string postalCode, string country, string homePhone, string extension, string image, string text, int reportsTo, string photoPath)
         {

@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\ProgressReportModel.cs" />
     <Compile Include="MVVM\ViewModel\SearchViewModel.cs" />
     <Compile Include="MVVM\ViewModel\CustomersViewModel.cs" />
     <Compile Include="MVVM\ViewModel\EmployeesViewModel.cs" />

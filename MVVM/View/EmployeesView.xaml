@@ -13,8 +13,8 @@
     </UserControl.DataContext>
     
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataView">
-        <DataGrid ItemsSource="{Binding Path=Employees}" Background="#3f3fc3">
-            
+        <DataGrid ItemsSource="{Binding Path=Employees}" Background="#0f4f73" AlternatingRowBackground="LightCyan">
+
         </DataGrid>
     </Grid>
 </UserControl>

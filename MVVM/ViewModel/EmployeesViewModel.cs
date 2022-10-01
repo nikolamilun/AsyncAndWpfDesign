@@ -29,14 +29,14 @@ namespace AsyncApp.ViewModel
 
         public EmployeesViewModel()
         {
-            Task.Run(() => LoadDataAsync().Wait());
+            Task.Run(() => LoadDataAsync());
         }
 
         private async Task LoadDataAsync()
         {
             try
             {
-                List<Employee> list = new List<Employee>();
+                ProgressReportModel report = new ProgressReportModel();
                 using (SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-0KT9RPJ;Initial Catalog=Northwind;Integrated Security=True"))
                 {
                     conn.Open();
@@ -46,14 +46,14 @@ namespace AsyncApp.ViewModel
 
                     while (sdr.Read())
                     {
-                        Employee ep = await Task.Run(() =>
+                        await Task.Run(() =>
                         {
-                            return new Employee(int.Parse(sdr[0].ToString()), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), Convert.ToDateTime((sdr[5].ToString())), Convert.ToDateTime(sdr[6].ToString()), sdr[7].ToString(), sdr[8].ToString(), sdr[9].ToString(), sdr[10].ToString(), sdr[11].ToString(), sdr[12].ToString(), sdr[13].ToString(), sdr[14].ToString(), sdr[15].ToString(), (sdr[16].ToString() == "") ? 0 : int.Parse(sdr[16].ToString()), sdr[17].ToString());
-                        });
-                        list.Add(ep);
-                    }
+                            Employee ep =  new Employee(int.Parse(sdr[0].ToString()), sdr[1].ToString(), sdr[2].ToString(), sdr[3].ToString(), sdr[4].ToString(), Convert.ToDateTime((sdr[5].ToString())), Convert.ToDateTime(sdr[6].ToString()), sdr[7].ToString(), sdr[8].ToString(), sdr[9].ToString(), sdr[10].ToString(), sdr[11].ToString(), sdr[12].ToString(), sdr[13].ToString(), sdr[14].ToString(), sdr[15].ToString(), (sdr[16].ToString() == "") ? 0 : int.Parse(sdr[16].ToString()), sdr[17].ToString());
 
-                    Employees = list;
+                            Employees.Add(ep);
+                        });
+                        
+                    }
                 }
             }
             catch (Exception)

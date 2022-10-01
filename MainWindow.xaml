@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AsyncApp"
         xmlns:viewModel="clr-namespace:AsyncApp.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="Northwind Explorer" Height="650" Width="1200" Background="#3050a0"
+        Title="Northwind Explorer" Height="650" Width="1200" Background="#3070a0"
         Icon="Images/icon.jpg">
 
     <Window.DataContext>
@@ -35,9 +35,9 @@
                    Grid.Row="1" Grid.Column="1"
                    Style="{StaticResource headingTheme}"/>
 
-        <Border Background="#3f909d" Grid.Row="1" Grid.Column="2"
+        <Border Background="#6f70ad" Grid.Row="1" Grid.Column="2"
                  Height="30px" Width="200px" BorderThickness="0" CornerRadius="10">
-            <TextBox x:Name="txtSearch" Background="Transparent" Foreground="#9fa09d" Text="Search:"
+            <TextBox x:Name="txtSearch" Background="Transparent" Foreground="White" Text="Search:"
                      VerticalAlignment="Center" BorderBrush="Transparent" BorderThickness="0"
                      Padding="4,4,4,4" TextChanged="txtSearch_TextChanged" GotFocus="txtSearch_GotFocus"
                      LostFocus="txtSearch_LostFocus">
@@ -49,7 +49,7 @@
         <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
 
             <RadioButton Content="Employees" Height="40" Foreground="GhostWhite" FontSize="12px"
-                         Style="{StaticResource menuButtonTheme}" Command="{Binding EmployeesViewCommand}"/>
+                         Style="{StaticResource menuButtonTheme}" Command="{Binding EmployeesViewCommand}" IsChecked="True"/>
             <RadioButton Content="Customers" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding CustomersViewCommand}"/>
             <RadioButton Content="Orders" Height="40" Foreground="GhostWhite" FontSize="12px"
@@ -63,7 +63,9 @@
 
         </StackPanel>
 
-        <ContentControl Grid.Row="2" Grid.Column="2" Margin="10" Content="{Binding Path=CurrentView}"/>
+        <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" CornerRadius="10" BorderThickness="1.5">
+            <ContentControl Margin="10" Content="{Binding Path=CurrentView}"/>
+        </Border>
 
     </Grid>
 </Window>
