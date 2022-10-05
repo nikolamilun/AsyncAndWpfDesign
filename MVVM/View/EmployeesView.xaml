@@ -6,15 +6,21 @@
              xmlns:local="clr-namespace:AsyncApp.View"
              xmlns:viewModel="clr-namespace:AsyncApp.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="650" d:DesignWidth="1200" FontSize="8px">
+             d:DesignHeight="650" d:DesignWidth="1200" FontSize="12px">
 
     <UserControl.DataContext>
         <viewModel:EmployeesViewModel/>
     </UserControl.DataContext>
-    
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataView">
-        <DataGrid ItemsSource="{Binding Path=Employees}" Background="#0f4f73" AlternatingRowBackground="LightCyan">
 
-        </DataGrid>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#0f4f73" x:Name="dataView">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Path=Employees}" Background="Transparent"  AlternatingRowBackground="Yellow" ColumnWidth="1*"></DataGrid>
+
+        <Button Grid.Row="1" Margin="0,10,0,0" Content="Save changes in database" Width="250" Height="70" FontSize="20px"/>
     </Grid>
 </UserControl>

@@ -50,16 +50,22 @@
 
             <RadioButton Content="Employees" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding EmployeesViewCommand}" IsChecked="True"/>
+            
             <RadioButton Content="Customers" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding CustomersViewCommand}"/>
+
             <RadioButton Content="Orders" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding OrdersViewCommand}"/>
+
             <RadioButton Content="Products" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding ProductsViewCommand}"/>
+
             <RadioButton Content="Regions" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding RegionsViewCommand}"/>
+
             <RadioButton Content="Search" Height="40" Foreground="GhostWhite" FontSize="12px"
                          Style="{StaticResource menuButtonTheme}" Command="{Binding SearchViewCommand}"/>
+
 
         </StackPanel>
 

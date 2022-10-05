@@ -31,8 +31,8 @@ namespace AsyncApp.MVVM.ViewModel
             get { return _currentView; }
             set
             {
-                OnPropertyChanged();
                 _currentView = value;
+                OnPropertyChanged();
             }
         }
 
