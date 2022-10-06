@@ -10,7 +10,7 @@ namespace AsyncApp.Model
 {
     public class Employee
     {
-        public Employee(int employeeID, string lastName, string firstName, string title, string titleOfCourtesy, DateTime dateOfBirth, DateTime hireDate, string address, string city, string region, string postalCode, string country, string homePhone, string extension, string image, string text, int reportsTo, string photoPath)
+        public Employee(int employeeID, string lastName, string firstName, string title, string titleOfCourtesy, DateTime dateOfBirth, DateTime hireDate, string address, string city, string region, string postalCode, string country, string homePhone, string extension, string text, int reportsTo, string photoPath)
         {
             EmployeeID = employeeID;
             LastName = lastName;
@@ -26,7 +26,6 @@ namespace AsyncApp.Model
             Country = country;
             HomePhone = homePhone;
             Extension = extension;
-            Image = image;
             Text = text;
             ReportsTo = reportsTo;
             PhotoPath = photoPath;
@@ -46,7 +45,6 @@ namespace AsyncApp.Model
         public string Country { get; set; }
         public string HomePhone { get; set; }
         public string Extension { get; set; }
-        public string Image { get; set; }
         public string Text { get; set; }
         public int ReportsTo { get; set; }
         public string PhotoPath { get; set; }

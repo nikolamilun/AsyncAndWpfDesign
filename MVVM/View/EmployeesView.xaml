@@ -19,8 +19,8 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" ItemsSource="{Binding Path=Employees}" Background="Transparent"  AlternatingRowBackground="Yellow" ColumnWidth="1*"></DataGrid>
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Path=Employees, Mode=TwoWay}" Background="Transparent"  AlternatingRowBackground="Yellow" ColumnWidth="1*"></DataGrid>
 
-        <Button Grid.Row="1" Margin="0,10,0,0" Content="Save changes in database" Width="250" Height="70" FontSize="20px"/>
+        <Button Grid.Row="1" Margin="0,10,0,0" Content="Save changes in database" Width="250" Height="70" FontSize="20px" Command="{Binding UpdateCommand}"/>
     </Grid>
 </UserControl>
