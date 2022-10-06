@@ -49,7 +49,6 @@ namespace AsyncApp.ViewModel
 
         private async Task UpdateDatabase()
         {
-            MessageBox.Show("Greska pri upisu u bazu!");
             try
             {
                 Task.Run(() => DataAccess.ReturnEmployeesAsync(Employees));

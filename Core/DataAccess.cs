@@ -14,15 +14,6 @@ namespace AsyncApp.Core
         private static string connString = @"Data Source=" + serverName + ";Initial Catalog=Northwind;Integrated Security=True";
 
         #region Database access
-
-        private async static Task ExecuteCommandAsync(string cmdText)
-        {
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.ExecuteNonQueryAsync();
-            }
-        }
         public async static Task<List<Employee>> GetEmployeesParallelAsync()
         {
             List<Employee> output = new List<Employee>();
@@ -99,7 +90,7 @@ namespace AsyncApp.Core
             {
                 tasks.Add(Task.Run(async() =>
                 {
-                    string cmdText = $"UPDATE Employees SET FirstName = {emp.FirstName}, LastName = {emp.LastName}, Title={emp.Title}, TitleOfCourtesy={emp.TitleOfCourtesy}, DateOfBirth={emp.DateOfBirth}, HireDate={emp.HireDate}, Address={emp.Address}, City={emp.City}, Region={emp.Region}, PostalCode={emp.PostalCode}, Country={emp.Country}, HomePhone={emp.HomePhone}, Extension={emp.Extension}, Notes={emp.Text}, ReportsTo={emp.ReportsTo}, PhotoPath={emp.PhotoPath}";
+                    string cmdText = $"UPDATE Employees SET FirstName = '{emp.FirstName}', LastName = '{emp.LastName}', Title='{emp.Title}', TitleOfCourtesy='{emp.TitleOfCourtesy}', DateOfBirth='{emp.DateOfBirth}', HireDate='{emp.HireDate}', Address='{emp.Address}', City='{emp.City}', Region='{emp.Region}', PostalCode='{emp.PostalCode}', Country='{emp.Country}', HomePhone='{emp.HomePhone}', Extension='{emp.Extension}', Notes='{emp.Text}', ReportsTo={emp.ReportsTo}, PhotoPath='{emp.PhotoPath}' WHERE EmployeeID = {emp.EmployeeID}";
                     await ExecuteCommandAsync(cmdText);
                 }));
             }
@@ -107,7 +98,15 @@ namespace AsyncApp.Core
 
         #endregion
 
-        #region Additional functions
+        #region Additional 
+        private async static Task ExecuteCommandAsync(string cmdText)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.ExecuteNonQueryAsync();
+            }
+        }
         private static int SafelyGetInt32(SqlDataReader sdr, int i)
         {
             if (sdr.IsDBNull(i))
